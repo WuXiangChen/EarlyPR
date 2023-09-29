@@ -1,5 +1,3 @@
-# 本节存储查询代码段
-
 _1_Commits_pSpecificFork = [
     {
         '$match': {
