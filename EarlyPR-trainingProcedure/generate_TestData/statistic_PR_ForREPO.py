@@ -1,5 +1,4 @@
-# 本节用于根据确定repo生成对应的数据集
-'''导包区'''
+
 from generate_TestData.MongoDB_Related.MongoDB_utils import mongo_conn
 from querySets_GenerateTestCommits import query_pPR_
 import pandas as pd
@@ -11,7 +10,6 @@ def query_repo_names(csv_file_path):
     return csv_values
 
 def query_MongDB(owners,i, database,query,csv_values,save_folder_name, save_type):
-    # 根据CSV列的值执行查询操作，并将结果保存在对应的文件中
     coll_names = database.list_collection_names()
     for repo_name,owner_name in csv_values.values[i:i+1]:
         for owner_specific in owners:
@@ -43,7 +41,6 @@ def find_element(A, B, C="pull_requests"):
     return None
 
 def PR_related_mian(owners,i):
-    # CSV文件路径和列名
     csv_file_path = "../decision_Sequential_tree/repo_data/repo_owner_name.csv"
     database = mongo_conn()
     csv_values = query_repo_names(csv_file_path)
@@ -54,11 +51,3 @@ def PR_related_mian(owners,i):
         if not os.path.exists(save_fold_path):
             os.mkdir(save_fold_path)
         query_MongDB(owners,i, database, query_content , csv_values, save_fold_path, save_type)
-
-# owner_repo = []
-# owner_shals = "owner_shals.csv"
-# shadf = pd.read_csv(owner_shals,header=None)
-# for sha in shadf.values:
-#     owners = sha.tolist()
-#     PR_related_mian(owners,0)
-#     print(str(0)+"=============")
