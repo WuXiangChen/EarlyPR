@@ -1,6 +1,3 @@
-# 本节存储查询代码段
-
-# 本节使用在pull_requests集合上，用以获取所有符合条件的commits集合
 _1_CommitsPos_pSpecificFork = [
     {
         '$match': {
@@ -80,8 +77,6 @@ _1_CommitsPos_pSpecificFork = [
         }
     }
 ]
-
-# 本节使用在commits集合上，用以获取所有符合条件的commits集合
 _1_CommitSqe_pSpecificFork = [
     {
         '$match': {
@@ -403,7 +398,6 @@ _2_statistics_pNCM = [
     }
 ]
 
-# 这里是新的 第一阶段的特征集合，用以替换_2_statistics_pNCM
 _1_statistics_pNCM = [
     {
         '$match': {
@@ -657,9 +651,6 @@ _1_statistics_pNCM = [
     }
 ]
 
-# 这里的信息将延用在extend features状态
-# 它们的输入信息 和 执行环境皆没有改变
-# 进一步 它们的输出信息也没有改变
 _10_PRs_Files_JaccardSimilarity = [
     {
         '$match': {
@@ -812,7 +803,6 @@ _10_PRs_Files_JaccardSimilarity = [
     }
 ]
 
-# 该查询过程使用在commits集合中
 _10_negative_CM_JSFiles_within_1Mon = [
     {
         '$match': {
@@ -1007,7 +997,7 @@ _11_PRs_Files_JS_TopK = [
             'pr_1Mon_files_Kth_JS': {
                 '$cond': {
                             'if': { '$eq': [ {'$size': {'$setUnion': ['$this_files', '$pr_files']} }, 0 ] },
-                            'then': 0,  # 如果分母为零，则返回0
+                            'then': 0,  
                             'else': {
                                   '$divide': [
                                 {
@@ -1087,8 +1077,8 @@ _11_PRs_Files_JS_TopK = [
             'pr_1Mon_files_Kth_JS': 1,
             'pr_1Mon_files_Jaccard_Similarity_Self': {
                 '$cond': {
-                    'if': { '$eq': [ { '$size': '$this_files' }, 0 ] }, # 检查分母是否为零
-                    'then': 0,  # 如果分母为零，则返回0
+                    'if': { '$eq': [ { '$size': '$this_files' }, 0 ] },
+                    'then': 0,  
                     'else': {
                         '$divide': [
                             { '$size': { '$setIntersection': [ '$this_files', '$pr_1Mon_filesLS' ] } },
@@ -1101,7 +1091,6 @@ _11_PRs_Files_JS_TopK = [
     }
 ]
 
-# 这里做的其实是将所有的运算过程放在mongodb中计算的方法，没有考虑中间存储的过程
 _12_getFilesLs_By_CMSHA = [
     {
         '$match': {
@@ -1259,15 +1248,6 @@ _12_getFilesLS_By_cmsha = [
         }
     }
 ]
-
-# 以下的信息皆来自于新增的特征集合，新增的特征同样将用于测试过程
-# 执行以下过程的特点是所有需要输入的信息只是CoCo
-# 且需要注意的是第一个执行环境是commits 其他的所有执行环境都是pull_requests
-
-# 本节的查询内容全部是为了进行制作JiangJing团队的特征集合
-# 该query使用在commits集合上
-# 需要输入%coco_shaLS
-# 输出 coco_firstCommit_time,coco_after3mon_time,coco_owner,files_changed
 _preWork_for_13_14_15_Query = [
     {
         '$match': {
@@ -1333,8 +1313,6 @@ _preWork_for_13_14_15_Query = [
     }
 ]
 
-# 该query使用在pull_requests集合上，需要输入 coco_firstCommit_time,coco_after3mon_time,coco_owner
-# 输出 RateMergedPr,prNum,RatePrCommits
 _13_contributorFeatures = [
     {
         '$match': {
@@ -1477,9 +1455,6 @@ _13_contributorFeatures = [
         }
     }
 ]
-
-# 该query使用在pull_requests集合上，需要输入 coco_firstCommit_time,coco_after3mon_time,files_changed
-# 输出 file_rejected_proportion
 _14_refusedPR_FilesLS_For_calculate_file_rejected_proportion = [
     {
         '$match': {
@@ -1666,8 +1641,6 @@ _14_refusedPR_FilesLS_For_calculate_file_rejected_proportion = [
     }
 ]
 
-# 该query使用在pull_requests集合上，需要输入 coco_firstCommit_time
-# 输出# last_10_merged,last_10_rejected,last_pr
 _15_last_10_mergedAndRejected_Andmost_recent = [
     {
         '$match': {
