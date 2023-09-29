@@ -34,7 +34,6 @@ class ConvolutionalNetwork(nn.Module):
         self.pool = nn.AdaptiveAvgPool1d(1)
         self.flatten = nn.Flatten()
         self.fc1 = nn.Linear(8, 12)
-        # 实例化卷积结构
         self.resnet_blocks = nn.ModuleList([ResNetBlock(8) for _ in range(num_resnet_blocks)])
         self.fc2 = nn.Linear(12, 1)
         self.optimizer = optim.Adam(self.parameters(), lr=0.001)
@@ -56,7 +55,6 @@ class ConvolutionalNetwork(nn.Module):
         return out
 
     def fit(self, X_train, y_train, num_epochs=10, batch_size=128):
-        # 输入数据是DataFrame格式的，我需要将其numpy化
         X_train = torch.from_numpy(X_train.values).float()
         y_train = torch.from_numpy(y_train.values).float()
         for epoch in range(num_epochs):
@@ -78,7 +76,6 @@ class ConvolutionalNetwork(nn.Module):
         y_pred = np.array([int(np.round(y_pred).flatten()[0])])
         return y_pred
 
-    # tmp 非主要方法
     def predictall(self, X_test):
         X_test = X_test.values
         X_test = torch.from_numpy(X_test).float().unsqueeze(1)
