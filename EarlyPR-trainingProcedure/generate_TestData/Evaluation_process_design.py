@@ -79,7 +79,7 @@ def performPredictProcess(df_data,file_):
                 tmp_ypred = loaded_model.predict(tmp_testD)
                 com_re.extend(tmp_ypred)
             else:
-                print("查询结果为空"+str(i))
+                print(str(i))
                 tmp_ypred = 0
                 com_re.extend([tmp_ypred])
             if tmp_ypred==1:
