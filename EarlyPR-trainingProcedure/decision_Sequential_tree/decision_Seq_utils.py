@@ -46,8 +46,6 @@ def find_element(A, B, C="pull_requests"):
             return element
     return None
 
-# 按pr数量随机抽样
-# 基本原则是尽可能的把所有的 data 取尽
 def non_repeated_sampling(data,n):
     samples = []
     for i in range(n):
@@ -67,8 +65,6 @@ def non_repeated_sampling(data,n):
         samples.append(sample)
     return samples
 
-
-# 按commits总数进行随机抽样
 def non_repeated_sampling_(data,n):
     samples = []
     options = [1, 2]
@@ -122,8 +118,8 @@ def calculate_and_print_metrics(testpr_IoU_all, conf_matrix_per, conf_matrix_ran
     print(f"mean_IoU_false_avg:", str(mean_i_IoU_false_avg))
     print(f"mean_IoU_ground_truth_filesBased_true_avg:", str(mean_i_IoU_ground_truth_filesBased_true_avg))
     print(f"mean_IoU_predicted_truth_filesBased_true_avg:", str(mean_i_IoU_predicted_truth_filesBased_true_avg))
-    print("mergedPR的混淆矩阵:\n", conf_matrix_per)
-    print("随机cm的mergedPR混淆矩阵:\n", conf_matrix_random_per)
+    print("mergedPR Confusion Matrix:\n", conf_matrix_per)
+    print("Random Cm Confusion Matrix:\n", conf_matrix_random_per)
 
     return evaluate
 
@@ -157,11 +153,6 @@ def calculate_metrics(testpr_IoU_all, conf_matrix_per, conf_matrix_random_per=No
     print(f"mean_IoU_false_avg:", str(mean_i_IoU_false_avg))
     print(f"mean_IoU_ground_truth_filesBased_true_avg:", str(mean_i_IoU_ground_truth_filesBased_true_avg))
     print(f"mean_IoU_predicted_truth_filesBased_true_avg:", str(mean_i_IoU_predicted_truth_filesBased_true_avg))
-    print("mergedPR的混淆矩阵:\n", conf_matrix_per)
-    print("随机cm的mergedPR混淆矩阵:\n", conf_matrix_random_per)
-
+    print("mergedPR Confusion Matrix:\n", conf_matrix_per)
+    print("Random Cm Confusion Matrix:\n", conf_matrix_random_per)
     return evaluate
-
-# 使用方法
-# 传递需要的参数：testpr_IoU_all, conf_matrix_per, conf_matrix_random_per, len_y_pre_, len_y_true_, i
-# result = calculate_and_print_metrics(testpr_IoU_all, conf_matrix_per, conf_matrix_random_per, len_y_pre_, len_y_true_, i)
