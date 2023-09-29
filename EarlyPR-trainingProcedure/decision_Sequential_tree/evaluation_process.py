@@ -126,7 +126,6 @@ def get_filesChanged_bySha(y_true_T, y_pre_T,queryex):
             values_dict = json.loads(values)
             changed_files_LS = values_dict["changed_files_LS"]
             predicted_files_changed.append(changed_files_LS)
-            # 得到了true_cocm 对应的 changed_files_LS
         else:
             tmp_repla_query = repla_query.copy()
             tmp_repla_query[0] = replace_value_recursive(tmp_repla_query[0], "%sha_LS", ["$sha",predict_cocm])
