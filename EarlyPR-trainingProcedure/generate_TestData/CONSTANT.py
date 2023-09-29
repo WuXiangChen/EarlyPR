@@ -2,11 +2,9 @@
 
 from pymongo import MongoClient
 
-# MongoDB连接信息
 mongodb_url = "mongodb:"
 database_name = ""
 
-# redis中db库与repo的对应关系：
 db_id_Torepo = {
     "ansible":0,
     "corefx":1,
