@@ -48,11 +48,7 @@ def train_and_evaluate_decision_tree_model(data_file):
     data = pd.read_csv(data_file)
     data['mergedPR'].fillna(-1, inplace=True)
     data.dropna(inplace=True)
-    #data.drop("#Churn", inplace=True, axis=1)
-    # data['mergedPR'].fillna(-1, inplace=True)
     data = data[data["label"]==1]
-    # data["pr_1Mon_files_Kth_JS"] = data["pr_1Mon_files_Kth_JS"].map(eval).map(lambda x: max(x))
-    # data.reset_index(inplace=True,drop=True)
 
     X = data.iloc[:, 4:]
     y = data.iloc[:, 0]
@@ -66,8 +62,6 @@ def train_and_evaluate_decision_tree_model(data_file):
     print("Number of 1's:", num_ones)
     print("Number of 0's:", num_zeros)
     print("Number of -1's:", num_Mone)
-    # imputer = SimpleImputer(strategy='mean')
-    # X = imputer.fit_transform(X)
     group_id = X["group_id"].drop_duplicates().reset_index(drop=True)
     group_id = group_id.sample(frac=1, random_state=42).reset_index(drop=True)
     len_ = int(len(group_id)/10)
