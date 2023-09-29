@@ -57,8 +57,3 @@ class LGBMClassifier:
 
 LGBM_trainer = LGBMClassifier()
 LGBM_trainer_mergedPR = LGBMClassifier()
-
-
-# import lightgbm as lgb
-# LGBM_trainer = lgb.LGBMClassifier(objective='binary', metric='Classification error rate', verbosity=-1)
-# LGBM_trainer_mergedPR = lgb.LGBMClassifier(objective='binary', metric='Classification error rate', verbosity=-1)
