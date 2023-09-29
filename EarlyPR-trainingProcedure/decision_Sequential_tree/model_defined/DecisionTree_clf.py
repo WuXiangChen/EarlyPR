@@ -84,7 +84,6 @@ class DecisionTreeClassifier:
                     best_gain_ratio = gain_ratio
                     best_split_feature = feature
                     best_split_value = value
-        #返回最佳分裂特征索引和最佳分裂阈值
         return best_split_feature, best_split_value
 
     def _grow_tree(self, X, y, depth=0):
