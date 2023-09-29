@@ -146,7 +146,6 @@ _1_CommitNeg_pSpecificFork = [
     }
 ]
 
-# 这里的查询结构将被替换
 _2_statistics_pNCM = [
     {
         '$match': {
@@ -681,8 +680,7 @@ _10_PRs_Files_JaccardSimilarity = [
             'first_commit': {
                 '$subtract': [
                     { '$toDate': '$last_created_at' },
-                    { '$multiply': [2592000000, 1] }  # 1个月等于30天（按30天一个月计算）
-                ]
+                    { '$multiply': [2592000000, 1] }  
             }
         }
     }, {
