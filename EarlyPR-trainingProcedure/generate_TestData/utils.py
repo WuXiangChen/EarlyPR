@@ -23,10 +23,8 @@ def calculate_entropy(obj):
     entropies = []
 
     for i,row in enumerate(column_data):
-        # 解析列表中的字典数据
         timestamps = row
 
-        # 计算时间间隔
         intervals = np.abs(np.diff([pd.to_datetime(timestamp) for timestamp in timestamps]))
         intervals = intervals[intervals != pd.Timedelta(0)]
         if len(intervals) == 0:
@@ -37,7 +35,6 @@ def calculate_entropy(obj):
         if sum_intervals == pd.Timedelta(0):
             entropy = 0
         else:
-            # 计算时间间隔的熵值
             entropy = -np.sum((intervals / sum_intervals) * np.log2(intervals / sum_intervals))
         entropies.append(entropy)
 
