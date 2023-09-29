@@ -16,13 +16,10 @@ class LGBMClassifier:
         return loss
 
     def _boost_round(self, y, w, y_pred):
-        # 计算残差
         residuals = y - y_pred
-        # 计算梯度和Hessian矩阵对角元素
         gradient = residuals
         loss = self.huber_loss(gradient, 0.5)
         hessian = loss * (1 - loss)
-        # 更新权重
         z = w * np.exp(-self.learning_rate * gradient) / (2 * np.sqrt(hessian+1))
         return z
 
@@ -37,7 +34,6 @@ class LGBMClassifier:
             y_pred = model.predict_lgbm(X.values)
             w = self._boost_round(y,w,y_pred)
             chosen_indices = np.random.choice(len(X), size=len(X)//2, p=w / np.sum(w))
-            # 根据索引来选择子集
             X = X.loc[chosen_indices].reset_index(drop=True)
             y = y.loc[chosen_indices].reset_index(drop=True)
             w = w.loc[chosen_indices].reset_index(drop=True)
