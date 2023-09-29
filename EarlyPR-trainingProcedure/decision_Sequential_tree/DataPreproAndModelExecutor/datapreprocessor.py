@@ -8,9 +8,7 @@ class datapreprocessor:
         pass
     def compare_hex_strings(self, item):
         hex_int_values = [int(element, 16) for element in item if isinstance(element, str)]
-        # 按从小到大的顺序排序并返回列表
         sorted_hex_values = sorted(hex_int_values)
-        # 将整数列表转换为 16 进制字符串列表
         sorted_hex_strings = [hex(value).strip("0x") for value in sorted_hex_values]
         return sorted_hex_strings
 
@@ -32,9 +30,7 @@ class datapreprocessor:
         column_data = [obj]
         entropies = []
         for i, row in enumerate(column_data):
-            # 解析列表中的字典数据
             timestamps = row
-            # 计算时间间隔
             intervals = np.abs(np.diff([pd.to_datetime(timestamp) for timestamp in timestamps]))
             intervals = intervals[intervals != pd.Timedelta(0)]
             if len(intervals) == 0:
@@ -45,7 +41,6 @@ class datapreprocessor:
             if sum_intervals == pd.Timedelta(0):
                 entropy = 0
             else:
-                # 计算时间间隔的熵值
                 entropy = -np.sum((intervals / sum_intervals) * np.log2(intervals / sum_intervals))
             entropies.append(entropy)
 
@@ -100,24 +95,6 @@ class datapreprocessor:
             first_index_element = tmp.index_.values[0]
             last_index_element = tmp.index_.values[-1]
             max_index_between_elements = last_index_element - first_index_element
-            # 最大跨越数+2
             if max_index_between_elements < coco_len + 1:
                 com_ls.append(tmp["commits"].tolist())
         return com_ls
-
-
-'''
-    combinations = list(itertools.combinations(tuple_rows, coco_len))
-    com_ls = []
-    # 现在这里应该写对这些组合施加条件
-    # 1。所有长度为coco_len的com，并对其施加条件为组内所有元素之间的index跨度不得大于coco_len + 1
-    for com in combinations:
-        tmp = pd.DataFrame(com)
-        first_index_element = tmp.index_.values[0]
-        last_index_element = tmp.index_.values[-1]
-        max_index_between_elements = last_index_element - first_index_element
-        if max_index_between_elements < coco_len + 1:
-            com_ls.append(tmp["commits"].tolist())
-    print(len(com_ls))
-    print("=========")
-'''
