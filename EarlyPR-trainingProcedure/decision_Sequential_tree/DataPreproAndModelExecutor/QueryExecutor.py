@@ -37,9 +37,7 @@ class queryexecutor:
         return coll, replacement
 
     def search_and_store(self, com):
-        #com = ['890178e6557d7210387445d5830b5c8de0a81e66', '9727916cdf42b5b3c8013905ceaaf960ae888793', '1d06ecb7a94f14d037b73c5f7bb350f3ac4d65e3']
         str_com = ",".join(com)
-        #redis_com_value = None
         redis_com_value = self.redis_st.get_value(str_com)
         coll, replacement = self.coll, self.replacement
         if redis_com_value and json.loads(redis_com_value) != None and 'TwoCommit' in json.loads(redis_com_value):
