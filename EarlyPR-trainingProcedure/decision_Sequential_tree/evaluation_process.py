@@ -1,4 +1,4 @@
-# 用作评估过程
+
 import copy
 from functools import reduce
 from pprint import pprint
