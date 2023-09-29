@@ -112,7 +112,6 @@ def calculate_and_print_metrics(testpr_IoU_all, conf_matrix_per, conf_matrix_ran
         "mean_i_IoU_predicted_truth_filesBased_true_avg": mean_i_IoU_predicted_truth_filesBased_true_avg
     }
 
-    print(f"===========Sequential Decision Tree第{i}次的IoU_均值===========")
     print(f"mean_IoU_ground_truth_true_avg:", str(mean_i_IoU_ground_truth_true_avg))
     print(f"mean_IoU_predicted_truth_true_avg:", str(mean_i_IoU_predicted_truth_true_avg))
     print(f"mean_IoU_false_avg:", str(mean_i_IoU_false_avg))
@@ -147,7 +146,7 @@ def calculate_metrics(testpr_IoU_all, conf_matrix_per, conf_matrix_random_per=No
         "mean_i_IoU_predicted_truth_filesBased_true_avg": mean_i_IoU_predicted_truth_filesBased_true_avg
     }
 
-    print(f"===========Sequential Decision Tree第{i}次的IoU_均值===========")
+    print(f"===========Sequential Decision Tree{i}IoU===========")
     print(f"mean_IoU_ground_truth_true_avg:", str(mean_i_IoU_ground_truth_true_avg))
     print(f"mean_IoU_predicted_truth_true_avg:", str(mean_i_IoU_predicted_truth_true_avg))
     print(f"mean_IoU_false_avg:", str(mean_i_IoU_false_avg))
