@@ -125,12 +125,6 @@ def train_and_evaluate_decision_tree_model(data_file):
     print("=======================")
     return tmp,tmp_re
 
-    # repo_name = data_file.split("\\")[-1].split(".csv")[0]
-    # save_path = saved_model_path+repo_name+"_Random_Forest_model.pickle"
-    # with open(save_path,"wb") as f:
-    #     pickle.dump(clf, f)
-    # print("======================")
-
 if __name__ == '__main__':
     root_path = 'data//prRelated_data//'
     saved_model_path = root_path + "prRelated_data_Model/"
