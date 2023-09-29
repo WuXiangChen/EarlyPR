@@ -29,7 +29,7 @@ def recursive_replace(query, replacement):
 
 import pandas as pd
 def save_commits_to_pickle(repo_name, owner_name, query_result, save_folder_name, save_type):
-    output_file_path = f"{repo_name}-{owner_name}_pulls." + save_type # 以仓库名作为文件名，使用pickle扩展名
+    output_file_path = f"{repo_name}-{owner_name}_pulls." + save_type 
     save_file_path = save_folder_name + "/" + output_file_path
     if save_type=="pickle":
         with open(save_file_path, "wb") as output_file:
@@ -41,11 +41,8 @@ def save_commits_to_pickle(repo_name, owner_name, query_result, save_folder_name
 
 import os
 def merge_csv_files(folder_path, output_file_path):
-    # 获取文件夹中的所有 CSV 文件
     csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
-    # 创建一个空的 DataFrame 用于保存合并后的数据
     merged_data = pd.DataFrame()
-    # 逐个读取 CSV 文件并合并到 DataFrame
     tmp_columns = []
     for file in csv_files:
         file_path = os.path.join(folder_path, file)
@@ -59,6 +56,5 @@ def merge_csv_files(folder_path, output_file_path):
         merged_data = pd.concat([merged_data,data],axis=1, ignore_index=False)
         tmp_columns.extend([str(file).split("_pulls.csv")[0] + "_" + cn for cn in data.columns])
 
-    # 将合并后的数据保存到输出文件
     merged_data.columns = tmp_columns
     merged_data.to_csv(output_file_path, index=False)
