@@ -1,11 +1,6 @@
 
 from pymongo import MongoClient
 
-
-mongodb_url = "mongodb://wxc:wxc@172.27.135.32:27017/"
-database_name = "oss_train_data"
-
-
 db_id_Torepo = {
     "ansible":0,
     "corefx":1,
