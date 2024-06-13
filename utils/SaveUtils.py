@@ -66,11 +66,10 @@ def merge_csv_files(folder_path, output_file_path):
 import os
 from pathlib import Path
 def save_results(df, repo_name, type_):
-
     if df is None:
         return
     else:
-        output_file_path = Path("save_runningResutls/" + type_+"/"+repo_name +".csv")
+        output_file_path = Path("saveRunningResults/" + type_+"/"+repo_name +".csv")
         output_file_path.parent.mkdir(parents=True, exist_ok=True)
 
         df.to_csv(output_file_path, index=False)

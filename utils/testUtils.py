@@ -118,7 +118,6 @@ def non_repeated_sampling(data,y_pred):
 
     return samples
 
-# 按commits总数进行随机抽样
 def non_repeated_sampling_(data,n):
     samples = []
     options = [1, 2]
