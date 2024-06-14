@@ -22,6 +22,10 @@ This repository contains the code necessary to replicate the findings presented 
 
 <span style="color:black">●</span> saveRunningResults folder : The running results of the prediction process. It is composed of the prediction results of the PRs and merged PRs for main experiments including EarlyPR and RandomPR.
 
+The core implementation of EarlyPR is mainly realized in the models folder, while the implementation of the statistical process is in the datasets/querySets_GenerateTestCommits.py file.
+The intermediate data obtained from the statistics is placed in the "datasets/data" directory.
+<p align="center"> &nbsp;<img src="TablesAndFigures/Statistics.png" width="400"/>&nbsp;&nbsp;&nbsp; <img src="TablesAndFigures/overviewStructure.png" width="400"/> </p>
+
 ## Running the scripts
 This paper contains two research questions and 16 different repositories, and the code for each research question is in the corresponding file.
 
@@ -43,7 +47,7 @@ You can directly execute the following command to obtain the main experimental r
 ```python
 python confusionMatrixCalculation.py
 ```
-<p align="center"> <img src="Tables/img.png" width="400"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="Tables/img_1.png" width="400"/> </p>
+<p align="center"> <img src="TablesAndFigures/Table3.png" width="400"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="TablesAndFigures/Figure3.png" width="400"/> </p>
 
 ## Requirements
 The requirements for running this repository are all in the requirements.yaml file. You can install them by running the following command:
