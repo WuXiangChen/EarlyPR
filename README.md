@@ -23,7 +23,7 @@ This repository contains the code necessary to replicate the findings presented 
 <span style="color:black">●</span> saveRunningResults folder : The running results of the prediction process. It is composed of the prediction results of the PRs and merged PRs for main experiments including EarlyPR and RandomPR.
 
 The core implementation of EarlyPR is mainly realized in the models folder, while the implementation of the statistical process is in the datasets/querySets_GenerateTestCommits.py file.
-The intermediate data obtained from the statistics is placed in the "datasets/data" directory.
+The intermediate data obtained from the statistics is placed in the "datasets/data" directory. We only display part of it due to the capacity limitations.
 <p align="center"> &nbsp;<img src="TablesAndFigures/Statistics.png" width="400"/>&nbsp;&nbsp;&nbsp; <img src="TablesAndFigures/overviewStructure.png" width="400"/> </p>
 
 ## Running the scripts
