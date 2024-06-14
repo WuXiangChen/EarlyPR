@@ -42,8 +42,10 @@ The parameters needed for testing  PRs' and mergedPRs' prediction codes are as f
 nohup python -u pr_run.py --do_test --mergedPRTest True --repo_name corefx  --modelPath "output/pr_output/servo/"  --MPmodelPath "output/mergepr_output/servo/" > TestCorefx.log 2>&1 &
 ```
 We also provide the running results of the prediction process in the folder **saveRunningResults**. 
-It contains the prediction results of the PRs and merged PRs for main experiments including **EarlyPR** and **RandomPR**. 
-You can directly execute the following command to obtain the main experimental results presented in Tables 3 and Figure 3.
+It contains the predicted as potenital PRs' results for main experiments including **EarlyPR** and **RandomPR**. 
+
+**You can directly execute the following command to obtain the main experimental results presented in the paper.**
+
 ```python
 python confusionMatrixCalculation.py
 ```
